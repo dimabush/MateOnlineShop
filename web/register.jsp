@@ -6,7 +6,7 @@
 <body>
 <center>
     <form action="register" method="post">
-        Email <input name="email" type="email"> <br>
+        Email <input name="email" type="email" value=${correntEmail}> <br>
         Password <input name="password" type="password"> <br>
         Repeat password <input name="repeatPassword" type="password"> <br>
         <button type="submit"> Register</button>

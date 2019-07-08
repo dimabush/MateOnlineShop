@@ -12,6 +12,7 @@
         Description <input name="description" type="text"> <br>
         Price <input name="price" type="number" step="0.01"> <br>
         <button type="submit"> Add</button>
+        <a href="/products">All products</a>
     </form>
     <h3>${isEmpty}</h3>
 </center>

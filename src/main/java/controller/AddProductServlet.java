@@ -1,6 +1,6 @@
 package controller;
 
-import dao.DataBase;
+import Factory.ProductServiceFactory;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -10,10 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.Product;
+import service.ProductService;
 
 
 @WebServlet(value = "/addproduct")
 public class AddProductServlet extends HttpServlet {
+
+  private static final ProductService productService = ProductServiceFactory.getInstance();
+
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
@@ -34,7 +38,7 @@ public class AddProductServlet extends HttpServlet {
     String description = req.getParameter("description");
     Double price = Double.valueOf(req.getParameter("price"));
     Product product = new Product(1L, name, description, price);
-    DataBase.PRODUCTS.add(product);
-    System.out.println(DataBase.PRODUCTS.toString());
+    productService.addProduct(product);
+    resp.sendRedirect("/addproduct");
   }
 }

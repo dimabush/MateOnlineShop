@@ -1,6 +1,6 @@
 package controller;
 
-import dao.DataBase;
+import Factory.UserServiceFactory;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -10,10 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.User;
+import service.UserService;
 
-
-@WebServlet(value = "/register", loadOnStartup = 12)
+@WebServlet(value = "/register")
 public class UserRegistrationServlet extends HttpServlet {
+
+  private static final UserService userService = UserServiceFactory.getInstance();
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -24,23 +26,22 @@ public class UserRegistrationServlet extends HttpServlet {
   @Override
   protected void doPost(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
-    if (req.getParameter("email").isEmpty()
-        || req.getParameter("password").isEmpty()
-        || req.getParameter("repeatPassword").isEmpty()) {
-      req.setAttribute("isEmpty", "All fields should be filled");
-      req.getRequestDispatcher("register.jsp").forward(req, resp);
-      resp.sendRedirect("/register");
-    }
+
     String email = req.getParameter("email");
     String password = req.getParameter("password");
     String repeatPassword = req.getParameter("repeatPassword");
+    if (email.isEmpty() || password.isEmpty() || repeatPassword.isEmpty()) {
+      req.setAttribute("isEmpty", "All fields should be filled");
+      req.setAttribute("correntEmail", email);
+      req.getRequestDispatcher("register.jsp").forward(req, resp);
+    }
     if (!password.equals(repeatPassword)) {
       req.setAttribute("notEquals", "Passwords do not match");
+      req.setAttribute("correntEmail", email);
       req.getRequestDispatcher("register.jsp").forward(req, resp);
     } else {
       User user = new User(1L, email, password);
-      DataBase.USERS.add(user);
-      System.out.println(DataBase.USERS.toString());
+      userService.addUser(user);
       resp.sendRedirect("/addproduct");
     }
   }
