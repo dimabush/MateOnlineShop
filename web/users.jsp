@@ -33,7 +33,11 @@
     }
     printWriter.write("</center>");
     printWriter.write("</table>");
-%>
+%> <br/>
+
+<form action="products" method="get">
+    <button>All products</button>
+</form>
 
 </body>
 </html>

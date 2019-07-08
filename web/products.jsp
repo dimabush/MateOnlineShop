@@ -27,7 +27,11 @@
     }
     printWriter.write("</center>");
     printWriter.write("</table>");
-%>
+%> <br/>
+<a href="/addproduct">Add new product</a> <br/>
+<form action="users" method="get">
+    <button>Users list</button>
+</form>
 
 </body>
 </html>
