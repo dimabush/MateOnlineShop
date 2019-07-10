@@ -2,12 +2,12 @@ package model;
 
 public class User {
 
-  private Long id;
+  private static Long id = 0L;
   private String mail;
   private String password;
 
-  public User(Long id, String mail, String password) {
-    this.id = id;
+  public User(String mail, String password) {
+    id ++;
     this.mail = mail;
     this.password = password;
   }

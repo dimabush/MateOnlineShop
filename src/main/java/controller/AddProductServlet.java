@@ -37,7 +37,7 @@ public class AddProductServlet extends HttpServlet {
     String name = req.getParameter("name");
     String description = req.getParameter("description");
     Double price = Double.valueOf(req.getParameter("price"));
-    Product product = new Product(1L, name, description, price);
+    Product product = new Product(name, description, price);
     productService.addProduct(product);
     resp.sendRedirect("/addproduct");
   }

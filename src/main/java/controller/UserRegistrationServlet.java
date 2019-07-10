@@ -40,7 +40,7 @@ public class UserRegistrationServlet extends HttpServlet {
       req.setAttribute("correntEmail", email);
       req.getRequestDispatcher("register.jsp").forward(req, resp);
     } else {
-      User user = new User(1L, email, password);
+      User user = new User(email, password);
       userService.addUser(user);
       resp.sendRedirect("/addproduct");
     }
