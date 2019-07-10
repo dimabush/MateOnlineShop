@@ -16,7 +16,7 @@ import service.ProductService;
 @WebServlet(value = "/addproduct")
 public class AddProductServlet extends HttpServlet {
 
-  private static final ProductService productService = ProductServiceFactory.getInstance();
+  private static ProductService productService = ProductServiceFactory.getInstance();
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)

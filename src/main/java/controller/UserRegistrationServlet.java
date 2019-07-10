@@ -15,7 +15,7 @@ import service.UserService;
 @WebServlet(value = "/register")
 public class UserRegistrationServlet extends HttpServlet {
 
-  private static final UserService userService = UserServiceFactory.getInstance();
+  private static UserService userService = UserServiceFactory.getInstance();
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)

@@ -15,11 +15,7 @@ import java.util.List;
 @WebServlet(value = "/users")
 public class AllUsersServlet extends HttpServlet {
 
-  static {
-    System.out.println("in users!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-  }
-
-  private static final UserService userService = UserServiceFactory.getInstance();
+  private static UserService userService = UserServiceFactory.getInstance();
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
