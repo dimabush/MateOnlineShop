@@ -17,10 +17,9 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public List<User> getAll() {
+    if (userDao.getAll().isEmpty()){
+      addUser(new User("test@gmail.com","test"));
+    }
     return userDao.getAll();
   }
-
-  /*public boolean isPresent(User user){
-    return getAll().contains(user);
-  }*/
 }
