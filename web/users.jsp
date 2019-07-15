@@ -12,6 +12,8 @@
     PrintWriter printWriter2 = response.getWriter();
     printWriter2.write("<center>");
     printWriter2.write("<a href=\"/register\">Register new user</a>");
+    printWriter2.write("</br>");
+    printWriter2.write((String) request.getAttribute("isPresent"));
     printWriter2.write("</center>");
 %>
 

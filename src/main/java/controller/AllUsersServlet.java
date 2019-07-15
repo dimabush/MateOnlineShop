@@ -24,4 +24,20 @@ public class AllUsersServlet extends HttpServlet {
     req.setAttribute("allUsers", allUsers);
     req.getRequestDispatcher("users.jsp").forward(req, resp);
   }
+
+  @Override
+  protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    String email = req.getParameter("email");
+    String password = req.getParameter("password");
+    System.out.println(email + "  " + password);
+    List<User> allUsers = userService.getAll();
+
+    if (allUsers.contains(new User(email, password))){
+      req.setAttribute("isPresent", "You are logged in as: " + email);
+    } else {
+      req.setAttribute("isPresent", "No such user");
+    }
+    req.setAttribute("allUsers", allUsers);
+    req.getRequestDispatcher("users.jsp").forward(req, resp);
+  }
 }

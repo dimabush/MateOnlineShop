@@ -11,7 +11,7 @@
 </center>
 <center>
     Or you can signing in
-<form action="/users" method="get">
+<form action="/users" method="post">
     <input name="email" placeholder="Email" type="email"/>
     <input name="password" placeholder="Password" type="password"/>
     <button type="submit">Sign in</button>

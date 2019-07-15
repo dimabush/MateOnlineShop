@@ -19,4 +19,8 @@ public class UserServiceImpl implements UserService {
   public List<User> getAll() {
     return userDao.getAll();
   }
+
+  /*public boolean isPresent(User user){
+    return getAll().contains(user);
+  }*/
 }
