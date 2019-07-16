@@ -2,7 +2,7 @@ package model;
 
 public class Product {
   private static long countId = 1;
-  private long id;
+  private Long id;
   private String name;
   private String description;
   private Double price;

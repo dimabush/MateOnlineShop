@@ -21,13 +21,7 @@ public class ProductServiceImpl implements ProductService {
   }
 
   @Override
-  public boolean remove(long id) {
-    for (Product product : getAll()) {
-      if (product.getId() == id){
-        getAll().remove(product);
-        return true;
-      }
-    }
-    return false;
+  public boolean remove(Long id) {
+    return productDao.remove(id);
   }
 }

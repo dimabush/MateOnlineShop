@@ -4,8 +4,8 @@ import java.util.Objects;
 
 public class User {
 
-  private static int countId = 1;
-  private long id;
+  private static long countId = 1;
+  private Long id;
   private String mail;
   private String password;
 

@@ -7,15 +7,26 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class ProductDaoImpl implements ProductDao {
-  public static final List<Product> PRODUCTS = new LinkedList<Product>();
+  public static final List<Product> products = new LinkedList<Product>();
 
   @Override
   public void addProduct(Product product) {
-    PRODUCTS.add(product);
+    products.add(product);
   }
 
   @Override
   public List<Product> getAll() {
-    return PRODUCTS;
+    return products;
+  }
+
+  @Override
+  public boolean remove(Long id) {
+    for (Product product: getAll()) {
+      if (product.getId() == id){
+        getAll().remove(product);
+        return true;
+      }
+    }
+    return false;
   }
 }
