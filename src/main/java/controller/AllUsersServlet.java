@@ -17,14 +17,6 @@ public class AllUsersServlet extends HttpServlet {
 
   private static UserService userService = UserServiceFactory.getInstance();
 
-  /*@Override
-  protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-      throws ServletException, IOException {
-    List<User> allUsers = userService.getAll();
-    req.setAttribute("allUsers", allUsers);
-    req.getRequestDispatcher("users.jsp").forward(req, resp);
-  }*/
-
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
       throws ServletException, IOException {
@@ -32,7 +24,7 @@ public class AllUsersServlet extends HttpServlet {
     String password = req.getParameter("password");
     System.out.println(email + "  " + password);
     List<User> allUsers = userService.getAll();
-    if (allUsers.contains(new User(email, password))){
+    if (allUsers.contains(new User(email, password))) {
       req.setAttribute("isPresent", "You are logged in as: " + email);
     } else {
       req.setAttribute("isPresent", "No such user");

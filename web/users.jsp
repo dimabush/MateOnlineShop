@@ -1,6 +1,4 @@
-<%@ page import="java.io.PrintWriter" %>
-<%@ page import="java.util.List" %>
-<%@ page import="model.User" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -8,44 +6,35 @@
 </head>
 <body>
 
-<%
-    PrintWriter printWriter2 = response.getWriter();
-    printWriter2.write("<center>");
-    printWriter2.write("<a href=\"/register\">Register new user</a>");
-    printWriter2.write("</br>");
-    printWriter2.write((String) request.getAttribute("isPresent"));
-    printWriter2.write("</center>");
-%>
-
-<%
-    PrintWriter printWriter = response.getWriter();
-    printWriter.write("<center>");
-
-    printWriter.write("<table border=\"1\">\n" +
-            "    <tr>\n" +
-            "        <th>Email</th>\n" +
-            "        <th>Password</th>\n" +
-            "    </tr>");
-    List<User> allUser = (List<User>) request.getAttribute("allUsers");
-    for (User user : allUser) {
-        printWriter.write("<tr>");
-        printWriter.write("<td>" + user.getMail() + "</td>");
-        printWriter.write("<td>" + user.getPassword() + "</td>");
-        printWriter.write("<td><form action=\"editUser\" method=\"post\">\n" +
-                "<button name=\"editUser\" type=\"submit\" value=\"" + user.getId() + "\">Edit</button>\n" +
-                "</form>");
-        printWriter.write("<form action=\"removeUser\" method=\"post\">\n" +
-                "<button name=\"removeUser\" type=\"submit\" value=\"" + user.getId() + "\">Remove</button>\n" +
-                "</form></td>");
-        printWriter.write("</tr>");
-    }
-    printWriter.write("</center>");
-    printWriter.write("</table>");
-%> <br/>
-
-<form action="products" method="get">
-    <button>All products</button>
-</form>
+<center>
+    <a href="/register">Register new user</a> </br>
+    ${isPresent}
+    <table border="1">
+        <tr>
+            <th>Email</th>
+            <th>Password</th>
+        </tr>
+        <tr>
+            <c:forEach var="user" items="${allUsers}">
+        <tr>
+            <td>${user.getMail()}</td>
+            <td>${user.getPassword()}</td>
+            <td>
+                <form action="editUser" method="post">
+                    <button name="editUser" type="submit" value="${user.getId()}">Edit</button>
+                </form>
+                <form action="removeUser" method="post">
+                    <button name="removeUser" type="submit" value="${user.getId()}">Remove</button>
+                </form>
+            </td>
+        </tr>
+        </c:forEach>
+    </table>
+    <br/>
+    <form action="products" method="get">
+        <button>All products</button>
+    </form>
+</center>
 
 </body>
 </html>

@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import model.Product;
 import service.ProductService;
 
-
 @WebServlet(value = "/addproduct")
 public class AddProductServlet extends HttpServlet {
 
