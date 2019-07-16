@@ -22,4 +22,16 @@ public class UserServiceImpl implements UserService {
     }
     return userDao.getAll();
   }
+
+  @Override
+  public boolean remove(long id) {
+    for (User user : getAll()) {
+      if(user.getId().equals(id)){
+        getAll().remove(user);
+        return true;
+      }
+    }
+    return false;
+  }
+
 }

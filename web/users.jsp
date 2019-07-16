@@ -29,8 +29,17 @@
     List<User> allUser = (List<User>) request.getAttribute("allUsers");
     for (User user : allUser) {
         printWriter.write("<tr>");
+
+        printWriter.write("<td>" + user.getId() + "</td>");
+
         printWriter.write("<td>" + user.getMail() + "</td>");
         printWriter.write("<td>" + user.getPassword() + "</td>");
+        printWriter.write("<td><form action=\"edit\" method=\"post\">\n" +
+                "<button name=\"edit\" type=\"submit\" value=\"" + user.getId() + "\">Edit</button>\n" +
+                "</form>");
+        printWriter.write("<form action=\"remove\" method=\"post\">\n" +
+                "<button name=\"remove\" type=\"submit\" value=\"" + user.getId() + "\">Remove</button>\n" +
+                "</form></td>");
         printWriter.write("</tr>");
     }
     printWriter.write("</center>");

@@ -1,13 +1,14 @@
 package model;
 
 public class Product {
-  private static Long id = 0L;
+  private static long countId = 1;
+  private long id;
   private String name;
   private String description;
   private Double price;
 
   public Product(String name, String description, Double price) {
-    id++;
+    this.id = countId++;
     this.name = name;
     this.description = description;
     this.price = price;

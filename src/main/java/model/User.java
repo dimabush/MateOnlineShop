@@ -4,12 +4,13 @@ import java.util.Objects;
 
 public class User {
 
-  private static Long id = 0L;
+  private static int countId = 1;
+  private long id;
   private String mail;
   private String password;
 
   public User(String mail, String password) {
-    id ++;
+    this.id = countId++;
     this.mail = mail;
     this.password = password;
   }
