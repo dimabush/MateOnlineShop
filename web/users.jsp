@@ -21,7 +21,7 @@
     PrintWriter printWriter = response.getWriter();
     printWriter.write("<center>");
 
-    printWriter.write("<table>\n" +
+    printWriter.write("<table border=\"1\">\n" +
             "    <tr>\n" +
             "        <th>Email</th>\n" +
             "        <th>Password</th>\n" +
@@ -29,16 +29,13 @@
     List<User> allUser = (List<User>) request.getAttribute("allUsers");
     for (User user : allUser) {
         printWriter.write("<tr>");
-
-        printWriter.write("<td>" + user.getId() + "</td>");
-
         printWriter.write("<td>" + user.getMail() + "</td>");
         printWriter.write("<td>" + user.getPassword() + "</td>");
-        printWriter.write("<td><form action=\"edit\" method=\"post\">\n" +
-                "<button name=\"edit\" type=\"submit\" value=\"" + user.getId() + "\">Edit</button>\n" +
+        printWriter.write("<td><form action=\"editUser\" method=\"post\">\n" +
+                "<button name=\"editUser\" type=\"submit\" value=\"" + user.getId() + "\">Edit</button>\n" +
                 "</form>");
-        printWriter.write("<form action=\"remove\" method=\"post\">\n" +
-                "<button name=\"remove\" type=\"submit\" value=\"" + user.getId() + "\">Remove</button>\n" +
+        printWriter.write("<form action=\"removeUser\" method=\"post\">\n" +
+                "<button name=\"removeUser\" type=\"submit\" value=\"" + user.getId() + "\">Remove</button>\n" +
                 "</form></td>");
         printWriter.write("</tr>");
     }

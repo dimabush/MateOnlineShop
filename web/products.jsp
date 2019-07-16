@@ -23,6 +23,12 @@
         printWriter.write("<td>" + product.getName() + "</td>");
         printWriter.write("<td>" + product.getDescription() + "</td>");
         printWriter.write("<td>" + product.getPrice() + "</td>");
+        printWriter.write("<td><form action=\"editProduct\" method=\"post\">\n" +
+                "<button name=\"editProduct\" type=\"submit\" value=\"" + product.getId() + "\">Edit</button>\n" +
+                "</form>");
+        printWriter.write("<form action=\"removeProduct\" method=\"post\">\n" +
+                "<button name=\"removeProduct\" type=\"submit\" value=\"" + product.getId() + "\">Remove</button>\n" +
+                "</form></td>");
         printWriter.write("</tr>");
     }
     printWriter.write("</center>");
