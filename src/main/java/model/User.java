@@ -8,11 +8,20 @@ public class User {
   private Long id;
   private String mail;
   private String password;
+  private String role;
 
   public User(String mail, String password) {
     this.id = countId++;
     this.mail = mail;
     this.password = password;
+    this.role = "USER";
+  }
+
+  public User(String mail, String password, String role) {
+    this.id = countId++;
+    this.mail = mail;
+    this.password = password;
+    this.role = role;
   }
 
   public Long getId() {
@@ -39,12 +48,21 @@ public class User {
     this.password = password;
   }
 
+  public String getRole() {
+    return role;
+  }
+
+  public void setRole(String role) {
+    this.role = role;
+  }
+
   @Override
   public String toString() {
     return "User{" +
         "id=" + id +
         ", mail='" + mail + '\'' +
         ", password='" + password + '\'' +
+        ", role='" + role + '\'' +
         '}';
   }
 

@@ -23,12 +23,17 @@ public class AllUsersServlet extends HttpServlet {
     String email = req.getParameter("email");
     String password = req.getParameter("password");
     List<User> allUsers = userService.getAll();
-    if (allUsers.contains(new User(email, password))) {
-      req.setAttribute("isPresent", "You are logged in as: " + email);
+    User userFromSession = (User) req.getSession().getAttribute("user");
+    if (userFromSession.getRole().equals("ADMIN")) {
+      if (allUsers.contains(new User(email, password))) {
+        req.setAttribute("isPresent", "You are logged in as: " + email);
+      } else {
+        req.setAttribute("isPresent", "No such user");
+      }
+      req.setAttribute("allUsers", allUsers);
+      req.getRequestDispatcher("users.jsp").forward(req, resp);
     } else {
-      req.setAttribute("isPresent", "No such user");
+      resp.sendRedirect("403.jsp");
     }
-    req.setAttribute("allUsers", allUsers);
-    req.getRequestDispatcher("users.jsp").forward(req, resp);
   }
 }
