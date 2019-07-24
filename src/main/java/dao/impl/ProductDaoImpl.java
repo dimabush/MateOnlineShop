@@ -21,8 +21,8 @@ public class ProductDaoImpl implements ProductDao {
 
   @Override
   public boolean remove(Long id) {
-    for (Product product: getAll()) {
-      if (product.getId() == id){
+    for (Product product : getAll()) {
+      if (product.getId() == id) {
         getAll().remove(product);
         return true;
       }

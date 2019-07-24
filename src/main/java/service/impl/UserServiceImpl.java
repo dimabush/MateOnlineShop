@@ -18,9 +18,6 @@ public class UserServiceImpl implements UserService {
 
   @Override
   public List<User> getAll() {
-    if (userDao.getAll().isEmpty()){
-      addUser(new User("test@gmail.com","test", "ADMIN"));
-    }
     return userDao.getAll();
   }
 
